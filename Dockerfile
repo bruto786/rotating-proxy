@@ -1,11 +1,12 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Matthias Kadenbach <matthias.kadenbach@gmail.com>
-
-RUN echo 'deb http://deb.torproject.org/torproject.org trusty main' | tee /etc/apt/sources.list.d/torproject.list
-RUN gpg --keyserver keys.gnupg.net --recv 886DDD89
+RUN apt-get update
+RUN apt-get install curl --yes
+RUN echo 'deb http://deb.torproject.org/torproject.org bionic xenial' | tee /etc/apt/sources.list.d/torproject.list
+RUN curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --import
 RUN gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -
 
-RUN echo 'deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu trusty main' | tee /etc/apt/sources.list.d/ruby.list
+RUN echo 'deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu xenial main' | tee /etc/apt/sources.list.d/ruby.list
 RUN gpg --keyserver keyserver.ubuntu.com --recv C3173AA6
 RUN gpg --export 80f70e11f0f0d5f10cb20e62f5da5f09c3173aa6 | apt-key add -
 
