@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER Matthias Kadenbach <matthias.kadenbach@gmail.com>
 RUN apt-get update
 RUN apt-get install curl --yes
-RUN echo 'deb http://deb.torproject.org/torproject.org bionic xenial' | tee /etc/apt/sources.list.d/torproject.list
+RUN echo 'deb http://deb.torproject.org/torproject.org xenial main' | tee /etc/apt/sources.list.d/torproject.list
 RUN curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --import
 RUN gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -
 
